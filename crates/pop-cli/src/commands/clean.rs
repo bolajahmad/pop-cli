@@ -7,6 +7,7 @@ use std::{
 	fs::{read_dir, remove_file},
 	path::PathBuf,
 };
+use cliclack::{confirm, outro_cancel};
 
 #[derive(Args)]
 #[command(args_conflicts_with_subcommands = true)]
@@ -42,7 +43,7 @@ pub(crate) struct CleanCacheCommand<'a, CLI: Cli> {
 
 impl<'a, CLI: Cli> CleanCacheCommand<'a, CLI> {
 	/// Executes the command.
-	pub(crate) fn execute(self) -> Result<()> {
+	pub(crate) fn execute(self, args: CleanCommandArgs) -> Result<()> {
 		self.cli.intro("Remove cached artifacts")?;
 
 		// Get the cache contents
