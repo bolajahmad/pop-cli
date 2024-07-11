@@ -7,7 +7,6 @@ use std::{
 	fs::{read_dir, remove_file},
 	path::PathBuf,
 };
-use cliclack::{confirm, outro_cancel};
 
 #[derive(Args)]
 #[command(args_conflicts_with_subcommands = true)]
